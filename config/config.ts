@@ -1,5 +1,10 @@
 import { IConfig } from 'umi-types';
 import pageRoutes from './router.config';
+const path = require('path');
+
+const root = path.resolve(__dirname, '../');
+const src = path.resolve(root, 'src');
+const ss = path.resolve(src, 'lib/single-spa/single-spa');
 
 // ref: https://umijs.org/config/
 const config: IConfig = {
@@ -43,6 +48,9 @@ const config: IConfig = {
   },
   disableRedirectHoist: true,
   outputPath: './dist',
+  alias: {
+    'single-spa': ss
+  },
   hash: true,
   manifest: {
     basePath: '/',
